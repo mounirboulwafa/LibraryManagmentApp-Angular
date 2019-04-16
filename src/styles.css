@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+/* <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">; */
+
+.container {
+  max-width: 85%;
+  margin-top: 2%;
+}
+
+
+.nonactive {
+  color: black;
+  background-color: silver;
+  cursor: hand;
+}
+
+
+/* .active, */
+.table-head {
+  color: white;
+  background-color: #343A40;
+
+}
+
+/* .active:hover {
+
+  color: white;
+} */
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: black;
+}

@@ -1,0 +1,175 @@
+<h4 class="mb-3">Livres</h4>
+<hr>
+<div class="mb-3">
+
+  <div class="row">
+
+    <ul class="nav justify-content-center">
+      <li class="nav-item ">
+        <a class="nav-link nonactive" routerLink="/Livres">La liste des livres</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link active" routerLink="/Livres/newbook">Ajouter un livre</a>
+      </li>
+
+    </ul>
+  </div>
+
+  <div class="row card booox">
+
+    <div class="row mt-4 ml-3 ">
+
+      <div class="col-lg-5 ml-3">
+        <form>
+          <div class="form-group">
+            <label class="control-label" for="book_title">Titre du livre</label>
+            <input type="text" name="book_title" value="" class="form-control" id="book_title" required="required">
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="isbn">ISBN</label>
+            <input type="text" name="isbn" value="" class="form-control" id="isbn" required="required" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
+          </div>
+
+          <!-- <div class="form-group">
+            <label class="control-label" for="book_type">type de livre</label>
+            <select name="type" class="form-control" id="type" required="required">
+              <option value="standard">Standard</option>
+              <option value="digital">Digital</option>
+            </select>
+          </div> -->
+
+          <div class="form-group">
+            <label class="control-label" for="book_pub">L'éditeur</label>
+            <input type="text" name="book_pub" value="" class="form-control" id="book_pub" required="required">
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="copyright_year">Edition</label>
+            <input type="text" name="edition" value="" class="form-control" id="copyright_year" required="required">
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="book_copies">Nombre de copies</label>
+            <input type="number" name="book_copies" id="book_copies" step="any" class="form-control" required="required"
+              min="0" value="">
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="price">Prix</label>
+            <input type="number" name="price" id="price" step="any" class="form-control" required="required" min="0"
+              value="">
+          </div>
+
+          <div class="form-group">
+            <label for="book_image">Image de couverture</label>
+            <input id="book_image" type="file" name="book_image" data-show-upload="false" data-show-preview="false"
+              accept="image/*" class="form-control file ">
+          </div>
+
+        </form>
+      </div>
+
+
+      <div class="col-lg-6 ml-3">
+
+        <div class="form-group">
+          <label class="control-label" for="category_id">Langues</label>
+          <div class="form-row">
+            <div class="col-md-11">
+              <select class="form-control" [(ngModel)]="model.name" name="category">
+                <option *ngFor="let ctgry of listeCategories" [ngValue]="ctgry">{{ctgry.name}}</option>
+              </select>
+            </div>
+            <div class="">
+              <a routerLink="/Categories/addcategorie"><i class="btn far fa-plus-square"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group ">
+          <label class="control-label" for="category_id">Catégories</label>
+          <div class="form-row">
+            <div class="col-md-11">
+              <select class="form-control" [(ngModel)]="model.name" name="category">
+                <option *ngFor="let ctgry of listeCategories" [ngValue]="ctgry">{{ctgry.name}}</option>
+              </select>
+            </div>
+            <div class="">
+              <a routerLink="/Categories/addcategorie"><i class="btn far fa-plus-square"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="author_id">Auteurs</label>
+          <div class="form-row">
+            <div class="col-md-11">
+              <select class="form-control" [(ngModel)]="model.name" name="author">
+                <option *ngFor="let aut of listeAuthors" [ngValue]="aut">{{aut.name}}</option>
+              </select>
+            </div>
+            <div class="">
+              <a routerLink="/Categories/addcategorie"><i class="btn far fa-plus-square"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="form-group">
+          <label class="control-label" for="date_receive">Date de recieved</label>
+          <input type="text" name="date_receive" value="" class="form-control" id="date_receive" required="required">
+        </div>
+      </div> -->
+
+        <div class="form-group">
+          <label class="control-label" for="description">Description</label>
+          <textarea name="description" cols="40" rows="3" class="form-control" id="description"></textarea>
+        </div>
+        <div class="form-group">
+          <input type="submit" name="submit" value="Soumettre" class="form-control" id="submit">
+        </div>
+
+
+
+      </div>
+
+
+
+    </div>
+    {{diagnostic}}
+
+
+
+
+
+    <!-- <table class="table table-striped">
+    <thead class="table-danger">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table> -->
+  </div>

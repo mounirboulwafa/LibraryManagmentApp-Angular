@@ -1,0 +1,75 @@
+<h4 class="mb-3">Collections</h4>
+<hr>
+<div class="mb-3">
+  <ngb-tabset>
+    <ngb-tab>
+      <ng-template ngbTabTitle class="mytab">La liste des collections </ng-template>
+      <ng-template ngbTabContent>
+
+        <div class="row mt-4 ml-3">
+          <table class="table table-striped custab">
+            <thead class="table-head">
+              <tr>
+                <td style="width: 5%">#</td>
+                <td style="width: 20%">Nom</td>
+                <td style="width: 30%">Description</td>
+                <td style="width: 15%">Actions</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let c of listeCategory">
+                <td>{{c.id}}</td>
+                <td><a href="/">{{c.name}}</a></td>
+                <td>{{c.description}}</td>
+                <td>
+                  <a class="btn " (click)="delete(c)">
+                    <i class="fas fa-trash-alt"></i>
+                  </a>
+                  <a class="btn " (click)="update(c)">
+                    <i class="fas fa-pen"></i>
+                  </a>
+                </td>
+            </tbody>
+          </table>
+
+        </div>
+
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab>
+      <ng-template ngbTabTitle class="mytab">Ajouter une collection </ng-template>
+      <ng-template ngbTabContent>
+        <div class="col mt-4 ml-3">
+          <div class="form-group">
+            <label class="control-label" for="member_type">Type</label>
+            <select name="type" class="form-control" id="type" required="required">
+              <option></option>
+              <option value="student">Etudiant</option>
+              <option value="teacher">Professeur</option>
+              <option value="public">Public</option>
+            </select>
+          </div>
+
+
+          <div class="form-group">
+            <label class="control-label" for="book_pub">L'école</label>
+            <input type="text" name="book_pub" value="" class="form-control" id="book_pub" required="required">
+          </div>
+          <div class="row">
+            <div class=" col form-group">
+              <label class="control-label" for="copyright_year">Classe</label>
+              <input type="text" name="edition" value="" class="form-control" id="copyright_year" required="required">
+            </div>
+
+            <div class="col form-group">
+              <label class="control-label" for="book_copies">Niveau</label>
+              <input type="number" name="book_copies" id="book_copies" step="any" class="form-control" required="required"
+                min="0" value="">
+            </div>
+
+          </div>
+        </div>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+</div>

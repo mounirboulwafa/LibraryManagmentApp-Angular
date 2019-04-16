@@ -1,0 +1,22 @@
+.justify-content-center {
+  /* margin: 10px;
+  position: relative;
+  left: 25%; */
+}
+
+.booox {
+  height: 700px;
+}
+
+
+
+.justify-content-center a {
+  /* padding: 20px; */
+
+}
+
+.justify-content-center a:hover {
+  background-color: #343A40;
+  color: whitesmoke;
+
+}

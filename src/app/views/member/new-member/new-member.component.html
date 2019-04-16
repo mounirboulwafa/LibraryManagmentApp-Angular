@@ -1,0 +1,116 @@
+<h4 class="mb-3">Members</h4>
+<hr>
+<div class="mb-3">
+
+  <div class="row">
+
+    <ul class="nav justify-content-center">
+      <li class="nav-item ">
+        <a class="nav-link nonactive" routerLink="/Members">La liste des membres</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link active" routerLink="/Members/newmember">Nouveau Member</a>
+      </li>
+
+    </ul>
+  </div>
+
+
+
+  <div class="row card booox">
+
+    <div class="row mt-4 ml-3 ">
+
+      <div class="col-lg-5 ml-3">
+        <form>
+          <div class="form-group">
+            <label class="control-label" for="book_title">Nom et Prenom</label>
+            <input type="text" name="book_title" value="" class="form-control" id="book_title" required="required">
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="cardnumber">No. Carte</label>
+            <input type="text" name="cardnumber" value="" class="form-control" id="cardnumber" required="required">
+          </div>
+
+
+          <div class="form-group">
+            <label class="control-label" for="book_pub">Date d'inscription</label>
+            <input type="text" name="book_pub" value="" class="form-control" id="book_pub" required="required">
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="sex">Sexe</label>
+            <select name="type" class="form-control" id="type" required="required">
+              <option></option>
+              <option value="student">Masculin</option>
+              <option value="teacher">Feminim</option>
+            </select>
+          </div>
+        </form>
+      </div>
+
+
+      <div class="col-lg-6 ml-3">
+
+        <div class="form-group">
+          <label class="control-label" for="member_type">Type</label>
+          <select name="type" class="form-control" id="type" required="required">
+            <option></option>
+            <option value="student">Etudiant</option>
+            <option value="teacher">Professeur</option>
+            <option value="public">Public</option>
+          </select>
+        </div>
+
+
+        <div class="form-group">
+          <label class="control-label" for="book_pub">L'école</label>
+          <input type="text" name="book_pub" value="" class="form-control" id="book_pub" required="required">
+        </div>
+        <div class="row">
+          <div class=" col form-group">
+            <label class="control-label" for="copyright_year">Classe</label>
+            <input type="text" name="edition" value="" class="form-control" id="copyright_year" required="required">
+          </div>
+
+          <div class="col form-group">
+            <label class="control-label" for="book_copies">Niveau</label>
+            <input type="number" name="book_copies" id="book_copies" step="any" class="form-control" required="required"
+              min="0" value="">
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-lg-5 ml-3">
+
+        <div class="form-group">
+          <label class="control-label" for="book_pub">Telephone</label>
+          <input type="text" name="book_pub" value="" class="form-control" id="book_pub" required="required">
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="book_pub">E-mail</label>
+          <input type="text" name="book_pub" value="" class="form-control" id="book_pub" required="required">
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="Addresse">Addresse</label>
+          <input type="text" name="Addresse" value="" class="form-control" id="Addresse" required="required">
+        </div>
+      </div>
+
+
+      <div class="col-lg-6 ml-3">
+        <div class="form-group">
+          <input type="submit" name="submit" value="Soumettre" class="form-control" id="submit">
+        </div>
+
+      </div>
+
+
+
+    </div>
+  </div>
+</div>

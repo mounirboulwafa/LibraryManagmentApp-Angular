@@ -1,0 +1,75 @@
+<h4 class="mb-3">Categories</h4>
+<hr>
+<div class="mb-3">
+
+  <div class="row mb-2">
+
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link nonactive" routerLink="/Categories">Les Catégories</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" routerLink="/Categories/addcategorie">Ajouter une catégorie</a>
+      </li>
+
+    </ul>
+  </div>
+
+  <div class="row card">
+    <div class="row mt-4 ml-3">
+
+      <!-- <div class="col-lg-6">
+      <table class="table table-striped custab">
+        <thead>
+          <tr>
+            <td>#</td>
+            <td>Nom</td>
+            <td>Descriprion</td>
+            <td>Actions</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of listeCategory">
+            <td>{{c.id}}</td>
+            <td>{{c.name}}</td>
+            <td>{{c.description}}</td>
+            <td>
+              <a class="btn btn-outline-danger" (click)="delete(m)">
+                <span class="glyphicon-trash"></span>
+              </a>
+              <a class="btn btn-outline-primary" (click)="update(m)">
+                <span class="glyphicon-trash"></span>
+              </a>
+            </td>
+        </tbody>
+      </table>
+    </div> -->
+
+      <div class="col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">Informations sur Le Produit ou Service</div>
+          <div class="panel-body">
+            <div class="col-md-12">
+
+              <form (ngSubmit)="onSubmit()" #myForm="ngForm">
+                <div class="form-group">
+                  <label>Nom categorie</label>
+                  <input class="form-control" placeholder="Placeholder" [(ngModel)]="model.name" name="cat">
+                </div>
+
+                <div class="form-group">
+                  <label>Description</label>
+                  <textarea class="form-control" placeholder="Placeholder" [(ngModel)]="model.description" name="cat">
+                  </textarea>
+                </div>
+                <button type="submit" class="btn btn-success" (click)="newCategory(); myForm.reset();">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{diagnostic}}
+    </div>
+  </div>
+</div>

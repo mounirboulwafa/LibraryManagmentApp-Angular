@@ -1,0 +1,413 @@
+<h4 class="mb-3">Livres</h4>
+<hr />
+<div class="mb-3">
+  <ngb-tabset>
+    <ngb-tab>
+      <ng-template ngbTabTitle class="mytab">La liste des livres </ng-template>
+      <ng-template ngbTabContent>
+        <div class="row mt-4 ml-3">
+          <table class="table table-striped custab">
+            <thead class="table-head">
+              <tr>
+                <!-- <td style="width: 5%">#</td> -->
+                <td style="width: 20%">Titre du livre</td>
+                <td style="width: 8%">ISBN</td>
+                <td style="width: 12%">Edition</td>
+                <td style="width: 12%">Auteurs</td>
+                <td style="width: 12%">Catégories</td>
+                <td style="width: 8%">Langue</td>
+                <td style="width: 5%">Qté.</td>
+                <td style="width: 8%">Prix</td>
+                <!-- <td style="width: 7%">Disponible</td> -->
+                <td style="width: 10%">Actions</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let book of listeBooks">
+                <td>
+                  <a class="btn" (click)="open(content); view(book)"
+                    >{{ book.title }}
+                  </a>
+                </td>
+                <td>{{ book.ISBN }}</td>
+                <td>{{ book.yearsEdition }}</td>
+                <td>{{ book.author.name }}</td>
+                <td>{{ book.category.name }}</td>
+                <td>{{ book.language.name }}</td>
+                <td>{{ book.qnt }}</td>
+                <td>{{ book.price }}</td>
+
+                <td>
+                  <a class="btn " (click)="delete(book)">
+                    <i class="fas fa-trash-alt"></i>
+                  </a>
+                  <a class="btn " (click)="open(content); view(book)">
+                    <i class="fas fa-pen"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </ng-template>
+    </ngb-tab>
+
+    <ngb-tab>
+      <ng-template ngbTabTitle class="mytab"
+        >Ajouter un nouveau livre
+      </ng-template>
+      <ng-template ngbTabContent>
+        <div class="mt-4 ml-3">
+          <div class="formbuilder">
+            <form class="row " [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="ml-3 col-lg-5">
+                <div class="form-group">
+                  <label>Titre du livre </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="title"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label>ISBN</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="ISBN"
+                  />
+                </div>
+
+                <!--
+                  <div class="form-group">
+                    <label>L'éditeur</label>
+                    <input type="text" class="form-control" formControlName="membershipDate">
+                  </div>
+                -->
+
+                <div class="form-group">
+                  <label>Edition</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    formControlName="yearsEdition"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label>Nombre de pages</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    formControlName="pagesNamber"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label>Nombre d'exemplaires</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    formControlName="qnt"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label>Prix</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    formControlName="price"
+                  />
+                </div>
+              </div>
+
+              <div class="ml-3 col-lg-5">
+                <div class="form-group">
+                  <label class="control-label" for="language_id">Langues</label>
+                  <div class="form-row">
+                    <div class="col-md-11">
+                      <select class="form-control" formControlName="language">
+                        <option
+                          *ngFor="let l of listeLanguages"
+                          [ngValue]="l"
+                          >{{ l.name }}</option
+                        >
+                      </select>
+                    </div>
+
+                    <div class="">
+                      <!--
+                        <a routerLink="/Categories/addcategorie"><i class="btn far fa-plus-square"></i></a>
+                      -->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group ">
+                  <label class="control-label" for="category_id"
+                    >Catégories</label
+                  >
+                  <div class="form-row">
+                    <div class="col-md-11">
+                      <select class="form-control" formControlName="category">
+                        <option
+                          *ngFor="let ctgry of listeCategories"
+                          [ngValue]="ctgry"
+                          >{{ ctgry.name }}</option
+                        >
+                      </select>
+                    </div>
+                    <div class="">
+                      <!--
+                        <a routerLink="/Categories/addcategorie"><i class="btn far fa-plus-square"></i></a>
+                      -->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label" for="author_id">Auteurs</label>
+                  <div class="form-row">
+                    <div class="col-md-11">
+                      <select class="form-control" formControlName="author">
+                        <option
+                          *ngFor="let aut of listeAuthors"
+                          [ngValue]="aut"
+                          >{{ aut.name }}</option
+                        >
+                      </select>
+                    </div>
+                    <div class="">
+                      <!--
+                        <a routerLink="/Categories/addcategorie"><i class="btn far fa-plus-square"></i></a>
+                      -->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label" for="description"
+                    >Description</label
+                  >
+                  <textarea
+                    name="description"
+                    cols="40"
+                    rows="3"
+                    class="form-control"
+                    formControlName="description"
+                  ></textarea>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-success">
+                    Sauvgarder
+                  </button>
+                  <h6 *ngIf="isAdded">Ajouter</h6>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!--
+            <div class="col-lg-5 ml-3">
+              <form>
+                <div class="form-group">
+                  <label class="control-label" for="book_title">Titre du livre</label>
+                  <input type="text" name="book_title" value="" class="form-control" id="book_title" required="required">
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label" for="isbn">ISBN</label>
+                  <input type="text" name="isbn" value="" class="form-control" id="isbn" required="required" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label" for="book_pub">L'éditeur</label>
+                  <input type="text" name="book_pub" value="" class="form-control" id="book_pub" required="required">
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label" for="copyright_year">Edition</label>
+                  <input type="text" name="edition" value="" class="form-control" id="copyright_year" required="required">
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label" for="book_copies">Nombre de copies</label>
+                  <input type="number" name="book_copies" id="book_copies" step="any" class="form-control" required="required"
+                    min="0" value="">
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label" for="price">Prix</label>
+                  <input type="number" name="price" id="price" step="any" class="form-control" required="required" min="0"
+                    value="">
+                </div>
+
+                <div class="form-group">
+                  <label for="book_image">Image de couverture</label>
+                  <input id="book_image" type="file" name="book_image" data-show-upload="false" data-show-preview="false"
+                    accept="image/*" class="form-control file ">
+                </div>
+
+              </form>
+            </div>
+
+
+            <div class="col-lg-6 ml-3">
+
+              <div class="form-group">
+                <label class="control-label" for="category_id">Langues</label>
+                <div class="form-row">
+                  <div class="col-md-11">
+                    <select class="form-control" [(ngModel)]="model.name" name="category">
+                      <option *ngFor="let ctgry of listeCategories" [ngValue]="ctgry">{{ctgry.name}}</option>
+                    </select>
+                  </div>
+                  <div class="">
+                    <a routerLink="/Categories/addcategorie"><i class="btn far fa-plus-square"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group ">
+                <label class="control-label" for="category_id">Catégories</label>
+                <div class="form-row">
+                  <div class="col-md-11">
+                    <select class="form-control" [(ngModel)]="model.name" name="category">
+                      <option *ngFor="let ctgry of listeCategories" [ngValue]="ctgry">{{ctgry.name}}</option>
+                    </select>
+                  </div>
+                  <div class="">
+                    <a routerLink="/Categories/addcategorie"><i class="btn far fa-plus-square"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label" for="author_id">Auteurs</label>
+                <div class="form-row">
+                  <div class="col-md-11">
+                    <select class="form-control" [(ngModel)]="model.name" name="author">
+                      <option *ngFor="let aut of listeAuthors" [ngValue]="aut">{{aut.name}}</option>
+                    </select>
+                  </div>
+                  <div class="">
+                    <a routerLink="/Categories/addcategorie"><i class="btn far fa-plus-square"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label" for="description">Description</label>
+                <textarea name="description" cols="40" rows="3" class="form-control" id="description"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="submit" name="submit" value="Soumettre" class="form-control" id="submit">
+              </div>
+
+            </div>
+          -->
+        </div>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+
+  <!-- ------------ Modaaaaal -------------- -->
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">
+        {{ oneBook.title }} - Détails
+      </h4>
+      <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form action="">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Titre du livre</label>
+          <div class="col-sm-6">
+            <label class="col-form-label">{{ oneBook.title }}</label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">ISBN</label>
+          <div class="col-sm-6">
+            <label class="col-form-label">{{ oneBook.ISBN }}</label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Edition</label>
+          <div class="col-sm-6">
+            <label class="col-form-label">{{ oneBook.yearsEdition }}</label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Auteur</label>
+          <div class="col-sm-6">
+            <label class="col-form-label">{{ oneBook.author.name }}</label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Categorie</label>
+          <div class="col-sm-6">
+            <label class="col-form-label">{{ oneBook.category.name }}</label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Langue</label>
+          <div class="col-sm-6">
+            <label class="col-form-label">{{ oneBook.language.name }}</label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Nombre d'exemplaire</label>
+          <div class="col-sm-6">
+            <label class="col-form-label">{{ oneBook.qnt }}</label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Nombre de pages</label>
+          <div class="col-sm-6">
+            <label class="col-form-label">{{ oneBook.pagesNamber }}</label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Prix</label>
+          <div class="col-sm-6">
+            <label class="col-form-label">{{ oneBook.price }}</label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Description</label>
+          <div class="col-sm-6">
+            <label class="col-form-label">{{ oneBook.description }}</label>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-outline-dark"
+        (click)="modal.close()"
+      >
+        Save
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-dark"
+        (click)="delete(oneBook); modal.close()"
+      >
+        Supprimer
+      </button>
+    </div>
+  </ng-template>
+</div>

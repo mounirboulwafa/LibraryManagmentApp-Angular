@@ -1,0 +1,21 @@
+/* .justify-content-center {
+  margin: 10px;
+  position: relative;
+  left: 25%;
+} */
+
+.active {
+  background-color: #343A40;
+  color: white;
+}
+
+/* .justify-content-center a {
+  padding: 20px;
+
+} */
+
+.justify-content-center a:hover {
+  background-color: #343A40;
+  color: whitesmoke;
+
+}
